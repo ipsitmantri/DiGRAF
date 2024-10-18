@@ -1,0 +1,61 @@
+method: grid
+name: baseline_ogb_moltox
+program: src/baselines.py
+metric:
+  goal: maximize
+  name: val_mean
+parameters:
+  activation: 
+    value: relu
+  backbone:
+    value: gine
+  dataset:
+    value: "ogbg-moltox21"
+  batch_size:
+    value: 64
+  hidden_channels:
+    values:
+      - 64
+      - 128
+  num_layers:
+    values:
+      - 2
+      - 4
+      - 6
+  lr:
+    values:
+      - 1.e-5
+      - 1.e-4
+      - 1.e-3
+      - 5.e-3
+  num_epochs:
+    value: 500
+  add_residual:
+    value: True
+  dropout:
+    values:
+      - 0.0
+      - 0.5
+  weight_decay:
+    values:
+      - 0.0
+      - 1.e-4
+      - 1.e-5
+      - 5.e-3
+  seed:
+    value: 1
+  alpha_gcn2:
+    values:
+      - 0.0
+  theta_gcn2:
+    values:
+      - 0.0
+  num_pieces:
+    values:
+      - 1
+      # - 2
+command:
+  
+  - python
+  - ${program}
+  - ${args}

@@ -1,0 +1,158 @@
+method: bayes
+name: digraf_sage_pubmed_wo
+program: src/main.py
+metric:
+  goal: maximize
+  name: metrics/val_mean
+parameters:
+  ALPHA_GCN2:
+    values:
+      - 0.0
+  THETA_GCN2:
+    values:
+      - 0.0
+  NUM_LAYERS:
+    values:
+      - 2
+      - 4
+      - 6
+  HIDDEN_DIM:
+    values:
+      - 16
+      - 64
+      - 128
+  CONV_LR:
+    values:
+      - 1.e-5
+      - 1.e-4
+      - 1.e-3
+      - 5.e-3
+      - 5.e-4
+      - 5.e-2
+  CONV_WD:
+    values:
+      - 0.0
+      - 1.e-4
+      - 1.e-5
+      - 5.e-3
+  LINEAR_LR:
+    values:
+      - 1.e-5
+      - 1.e-4
+      - 1.e-3
+      - 5.e-3
+      - 5.e-2
+  LINEAR_WD:
+    values:
+      - 0.0
+      - 1.e-4
+      - 1.e-5
+      - 5.e-3
+  THETA_LR:
+    values:
+      - 5.e-6
+      - 1.e-6
+      - 1.e-5
+      - 1.e-4
+      - 1.e-3
+      - 5.e-3
+  THETA_WD:
+    values:
+      - 0.0
+      - 1.e-4
+      - 1.e-5
+      - 5.e-3
+  RADIUS:
+    distribution: uniform
+    min: 1
+    max: 10
+  DROPOUT:
+    values:
+      - 0.0
+      - 0.5
+  THETA_HIDDEN_DIM:
+    values:
+      - 16
+      - 32
+      - 64
+      - 128
+  THETA_NUM_LAYERS:
+    values:
+      - 2
+      # - 4
+      # - 6
+  TRANSFORM_THETA:
+    values:
+      - True
+      # - False
+  THETA_POOLING:
+    values:
+      - mean
+      - sum
+  SHARED_ACTIVATION:
+    values:
+      - True
+  USE_TANH:
+    value: True
+  SCHEDULER_STEP_SIZE:
+    values:
+      - 50
+  TASK:
+    value: sweep
+  SEED:
+    values:
+      - 1
+  REG_COEFF:
+    values:
+      - 0
+      # - 0.5
+      - 0.1
+      - 0.01
+      - 0.001
+      - 0.001
+      - 1.0
+  ACTIVATION:
+    values:
+      - cpab_same_theta
+  BACKBONE:
+    values:
+      - sage
+  BATCH_SIZE:
+    values:
+      - 64
+  TESS_SIZE:
+    values:
+    # - 1
+    # - 2
+    # - 4
+    - 8
+    - 16
+    - 32
+  DATASET_NAME:
+    values:
+      - PubMed
+  DATASET_PATH:
+    value: data/
+  CHECKPOINT_PATH:
+    value: saved_models/GNNs
+  MODEL_NAME:
+    value: CPABGCN
+  PROJECT_NAME:
+    value: Diffeomorphic Graph Neural Networks
+  ACCELERATOR:
+    value: gpu
+  MAX_EPOCHS:
+    value: 1000
+  TIME_INTEGRATION:
+    value: 0
+  USE_REGULARIZATION:
+    values:
+      - True
+  TRACK_RUNNING_STATS:
+    values:
+      - True
+command:
+  
+  - python
+  - ${program}
+  - ${args}

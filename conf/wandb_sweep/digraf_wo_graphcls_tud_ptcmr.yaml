@@ -1,0 +1,132 @@
+method: bayes
+name: digraf_wo_graphcls_tud_ptcmr
+program: src/main.py
+metric:
+  goal: maximize
+  name: metrics/val_mean
+parameters:
+  NUM_LAYERS:
+    values:
+      - 4
+      - 6
+  HIDDEN_DIM:
+    values:
+      - 16
+      - 32
+  CONV_LR:
+    values:
+      - 1.e-5
+      - 1.e-4
+      - 1.e-3
+      - 5.e-3
+  CONV_WD:
+    values:
+      - 0.0
+      - 1.e-4
+      - 1.e-5
+      - 5.e-3
+  THETA_LR:
+    values:
+      - 5.e-6
+      - 1.e-6
+      - 1.e-5
+      - 1.e-4
+      - 1.e-3
+      - 5.e-3
+  THETA_WD:
+    values:
+      - 0.0
+      - 1.e-4
+      - 1.e-5
+      - 5.e-3
+  RADIUS:
+    distribution: uniform
+    min: 1
+    max: 10
+  GRAPH_POOLING:
+    values:
+      - sum
+      - mean
+  DROPOUT:
+    values:
+      - 0.0
+      - 0.5
+  THETA_HIDDEN_DIM:
+    values:
+      - 16
+      - 32
+      - 64
+      - 128
+  THETA_NUM_LAYERS:
+    values:
+      - 2
+  TRANSFORM_THETA:
+    values:
+      - True
+      # - False
+  THETA_POOLING:
+    values:
+      - mean
+  SHARED_ACTIVATION:
+    values:
+      - True
+  USE_TANH:
+    value: True
+  SCHEDULER_STEP_SIZE:
+    values:
+      - 50
+  TASK:
+    value: sweep
+  SEED:
+    values:
+      - 1
+  REG_COEFF:
+    values:
+      - 0.01
+      - 0.001
+      - 1.0
+  ACTIVATION:
+    values:
+      - cpab_same_theta
+  BACKBONE:
+    values:
+      - gin
+  BATCH_SIZE:
+    values:
+      - 32
+      - 128
+  TESS_SIZE:
+    values:
+    - 8
+    - 16
+    - 32
+  DATASET_NAME:
+    values:
+      - PTC_MR
+  DATASET_PATH: 
+    value: data/
+  CHECKPOINT_PATH: 
+    value: saved_models/GNNs
+  MODEL_NAME: 
+    value: CPABGCN
+  PROJECT_NAME: 
+    value: Diffeomorphic Graph Neural Networks
+  ACCELERATOR: 
+    value: gpu
+  MAX_EPOCHS:
+    value: 1000
+  TIME_INTEGRATION:
+    value: 0
+  USE_REGULARIZATION:
+    values:
+      - True
+      - False
+  TRACK_RUNNING_STATS:
+    values:
+      - True
+      - False
+command:
+  
+  - python
+  - ${program}
+  - ${args}
