@@ -109,7 +109,7 @@ After obtaining a `<sweep-id>`, launch the agent using `wandb agent <sweep-id>`.
 ## Cite Us
 ```bibtex
 @inproceedings{
-anonymous2024digraf,
+mantri2024digraf,
 title={Di{GRAF}: Diffeomorphic Graph-Adaptive Activation Function},
 author={Krishna Sri Ipsit Mantri and Xinzhi Wang and Carola-Bibiane Sch{\"o}nlieb and Bruno Ribeiro and Beatrice Bevilacqua and Moshe Eliasof},
 booktitle={The Thirty-eighth Annual Conference on Neural Information Processing Systems},
